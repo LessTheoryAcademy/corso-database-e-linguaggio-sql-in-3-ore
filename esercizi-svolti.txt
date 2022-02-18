@@ -1,0 +1,465 @@
+Vogliamo creare la nostra tabella clienti, avente le seguenti caratteristiche
+
+ID INT NOT NULL AUTO_INCREMENT
+nome VARCHAR(50) NOT NULL
+cognome VARCHAR(50) NOT NULL
+data_registrazione DATETIME NOT NULL
+
+ID come PRIMARY KEY
+
+Soluzione :
+
+CREATE TABLE `clienti` ( 
+	`ID` INT NOT NULL AUTO_INCREMENT,
+	`nome` VARCHAR(50) NOT NULL,
+	`cognome` VARCHAR(50) NOT NULL,
+	`data_registrazione` DATETIME NOT NULL,
+	PRIMARY KEY (`ID`)
+);
+
+###
+
+Vogliamo creare la nostra tabella ordini, avente le seguenti caratteristiche
+
+ID INT NOT NULL AUTO_INCREMENT
+note TEXT NOT NULL
+data_creazione DATETIME NOT NULL
+data_pagamento DATETIME NOT NULL
+cliente_id INT NOT NULL
+
+ID come PRIMARY KEY
+cliente_id come FOREIGN KEY della colonna ID della tabella clienti
+
+Soluzione :
+
+CREATE TABLE `ordini` ( 
+	`ID` INT NOT NULL AUTO_INCREMENT,
+	`note` TEXT NOT NULL,
+	`data_creazione` DATETIME NOT NULL,
+	`data_pagamento` DATETIME NOT NULL,
+	`cliente_id` INT NOT NULL,
+	PRIMARY KEY (`ID`),
+	FOREIGN KEY (`cliente_id`) REFERENCES clienti(ID)
+);
+
+###
+
+Vogliamo creare la nostra tabella contatti_clienti con l'interfaccia grafica, avente le seguenti caratteristiche
+
+ID INT NOT NULL AUTO_INCREMENT
+indirizzo VARCHAR(100) NOT NULL
+telefono VARCHAR(30) UNIQUE NOT NULL
+email VARCHAR(50) UNIQUE NOT NULL
+cliente_id INT UNIQUE NOT NULL
+
+ID come PRIMARY KEY
+cliente_id come FOREIGN KEY della colonna ID della tabella clienti
+
+Soluzione :
+
+Creiamola da interfaccia grafica
+
+###
+
+Vogliamo creare la nostra tabella prodotti con l'interfaccia grafica, avente le seguenti caratteristiche
+
+ID INT NOT NULL AUTO_INCREMENT
+nome VARCHAR(50) UNIQUE NOT NULL
+prezzo FLOAT(7,2) NOT NULL
+ 
+ID come PRIMARY KEY
+
+Soluzione :
+
+Creiamola da interfaccia grafica
+
+###
+
+Vogliamo creare la nostra tabella ordine_prodotto con l'interfaccia grafica, avente le seguenti caratteristiche
+
+ID INT NOT NULL AUTO_INCREMENT
+quantità TINYINT NOT NULL
+ordine_id INT NOT NULL
+prodotto_id INT NOT NULL
+
+ID come PRIMARY KEY
+ordine_id come FOREIGN KEY della colonna ID della tabella ordini
+prodotto_id come FOREIGN KEY della colonna ID della tabella prodotti
+UNIQUE(ordine_id, prodotto_id)
+
+Soluzione :
+
+Creiamola da interfaccia grafica
+
+###
+
+Aggiungiamo la descrizione ai prodotti
+
+Soluzione :
+
+ALTER TABLE `prodotti` 
+ADD `descrizione` TEXT NOT NULL AFTER `nome`;
+
+###
+
+Settiamo a 100 la lunghezza massima del nome del prodotto
+
+Soluzione :
+
+ALTER TABLE `prodotti` 
+MODIFY COLUMN `nome` VARCHAR(100) UNIQUE NOT NULL;
+
+###
+
+Aggiungiamo alla tabella prodotti una nuova colonna chiamata «nome_1» e poi eliminiamola
+
+Soluzione :
+
+ALTER TABLE `prodotti` 
+ADD `nome_1` TEXT;
+
+ALTER TABLE `prodotti` 
+DROP COLUMN `nome_1`;
+
+###
+
+Creiamo una nuova tabella chiamata «tabella_prova» e poi eliminiamola
+
+Soluzione :
+
+Creiamo una tabella di prova da interfaccia grafica (tabella_prova)
+
+e poi
+DROP TABLE `tabella_prova`;
+
+###
+
+Leggiamo i nomi e i prezzi di tutti i prodotti presenti nella tabella prodotti
+
+Soluzione :
+
+SELECT nome, prezzo
+FROM prodotti;
+
+###
+
+Leggiamo tutti i dati di tutti i prodotti presenti nella tabella prodotti
+
+Soluzione :
+
+SELECT *
+FROM prodotti;
+
+###
+
+Leggiamo i nomi e prezzi di tutti i prodotti presenti nella tabella prodotti che hanno un prezzo uguale a 79
+
+Soluzione :
+
+SELECT nome, prezzo
+FROM prodotti
+WHERE prezzo = 79;
+
+###
+
+Leggiamo i nomi e prezzi di tutti i prodotti presenti nella tabella prodotti che hanno un prezzo diverso da 79
+
+Soluzione :
+
+SELECT nome, prezzo
+FROM prodotti
+WHERE prezzo <> 79;
+
+###
+
+Leggiamo i nomi e prezzi di tutti i prodotti presenti nella tabella prodotti che contengono la stringa «weights» nel nome
+
+Soluzione :
+
+SELECT nome, prezzo
+FROM prodotti
+WHERE nome LIKE ‘%weights%’;
+
+###
+
+Leggiamo i nomi e prezzi di tutti i prodotti che contengono la stringa «weights» nel nome e che hanno come prezzo 96
+
+Soluzione :
+
+SELECT nome, prezzo
+FROM prodotti
+WHERE nome LIKE ‘%weights%’ AND prezzo = 96;
+
+###
+
+Leggiamo i nomi e prezzi di tutti i prodotti che contengono la stringa «weights» nel nome o che contengono la stringa «ski» nel nome
+
+Soluzione :
+
+SELECT nome, prezzo
+FROM prodotti
+WHERE nome LIKE ‘%weights%’ OR nome LIKE ‘%ski%’;
+
+###
+
+Leggiamo tutti i prezzi dei prodotti
+
+Soluzione :
+
+SELECT prezzo
+FROM prodotti;
+
+###
+
+Leggiamo tutti i prezzi dei prodotti. Ogni prezzo deve essere mostrato una sola volta
+
+Soluzione :
+
+SELECT DISTINCT prezzo
+FROM prodotti;
+
+ovviamente possiamo aggiungere dei filtri
+
+WHERE nome LIKE ‘%weights%’
+
+###
+
+Contiamo tutti i prodotti presenti all’interno della tabella prodotti
+
+Soluzione :
+
+SELECT COUNT(*)
+FROM prodotti;
+
+ovviamente possiamo aggiungere dei filtri
+
+WHERE nome LIKE ‘%weights%’
+
+###
+
+Calcoliamo la media dei prezzi dei prodotti presenti nella tabella prodotti
+
+Soluzione :
+
+SELECT AVG(prezzo)
+FROM prodotti;
+
+ovviamente possiamo aggiungere dei filtri
+
+WHERE nome LIKE ‘%weights%’
+
+###
+
+Calcoliamo la somma dei prezzi dei prodotti presenti nella tabella prodotti
+
+Soluzione :
+
+SELECT SUM(prezzo)
+FROM prodotti;
+
+ovviamente possiamo aggiungere dei filtri
+
+WHERE nome LIKE ‘%weights%’
+
+###
+
+Calcoliamo il prezzo massimo dei prodotti presenti nella tabella prodotti
+
+Soluzione :
+
+SELECT MAX(prezzo)
+FROM prodotti;
+
+ovviamente possiamo aggiungere dei filtri
+
+WHERE nome LIKE ‘%weights%’
+
+###
+
+Calcoliamo il prezzo minimo dei prodotti presenti nella tabella prodotti
+
+Soluzione :
+
+SELECT MIN(prezzo)
+FROM prodotti;
+
+ovviamente possiamo aggiungere dei filtri
+
+WHERE nome LIKE ‘%weights%’
+
+###
+
+Vogliamo mostrare i prodotti ordinati per prezzo, da quello che costa meno a quello che costa di più
+
+Soluzione :
+
+SELECT *
+FROM prodotti
+ORDER BY prezzo ASC;
+
+ovviamente possiamo aggiungere dei filtri
+
+WHERE nome LIKE ‘%weights%’
+
+###
+
+Vogliamo mostrare i prodotti ordinati per prezzo, da quello che costa di più a quello che costa meno
+
+Soluzione :
+
+SELECT *
+FROM prodotti
+ORDER BY prezzo DESC;
+
+ovviamente possiamo aggiungere dei filtri
+
+WHERE nome LIKE ‘%weights%’
+
+###
+
+Vogliamo mostrare il nome e il prezzo dei prodotti, e nella colonna prezzo al posto della stringa «prezzo» mostrare la stringa «prezzo del prodotto»
+
+Soluzione :
+
+SELECT nome, prezzo AS `prezzo del prodotto`
+FROM prodotti;
+
+ovviamente possiamo aggiungere dei filtri
+WHERE nome LIKE ‘%weights%’
+
+###
+
+Vogliamo inserire nella tabella prodotti un nuovo prodotto con i seguenti valori :
+- nome : «scarpe da calcio» 
+- descrizione : «ottime scarpe da calcio»
+- prezzo : 70
+
+Soluzione :
+
+INSERT INTO prodotti (nome, descrizione, prezzo) 
+VALUES ('scarpe da calcio', ‘ottime scarpe da calcio', 70);
+
+###
+
+Siccome i nostri prodotti hanno nome e descrizione in inglese, vogliamo cambiare i valori del prodotto appena inserito.
+Quindi cambiamo il nome del prodotto da «scarpe da calcio» a «football boots» e la descrizione da «scarpe da calcio in offerta» a «great football boots» 
+
+Soluzione :
+
+UPDATE prodotti
+SET
+nome = 'football boots',
+descrizione = 'great football boots'
+WHERE
+ID = vedere id del prodotto appena inserito;
+
+###
+
+Non vendiamo più le scarpe da calcio, vogliamo eliminarle dalla tabella prodotti
+
+Soluzione :
+
+DELETE FROM prodotti
+WHERE
+ID = vedere id del prodotto appena inserito;
+
+###
+
+Vogliamo cambiare totalmente i prodotti che vendiamo, vogliamo quindi svuotare la tabella prodotti
+
+Soluzione :
+L'esercizio ci chiede di svuotare la tabella prodotti...ma a noi ci serve per i prossimi esercizi!
+Quindi ne facciamo una copia, e svuotiamo quella!
+
+CREATE TABLE prodotti_1 AS SELECT * FROM prodotti;
+
+poi
+
+TRUNCATE TABLE prodotti_1;
+
+e poi rimuoviamola
+
+DROP TABLE prodotti_1;
+
+###
+
+Vogliamo mostrare la lista dei nomi dei nostri clienti, mostrando un determinato nome una sola volta
+
+Soluzione :
+
+SELECT nome 
+FROM `clienti`  
+GROUP BY nome;
+
+###
+
+Vogliamo mostrare la lista dei nomi e dei cognomi dei nostri clienti, mostrando un determinato nome e cognome una sola volta
+
+Soluzione :
+
+SELECT nome, cognome
+FROM `clienti`  
+GROUP BY nome, cognome;
+
+###
+
+Vogliamo mostrare la lista dei nomi dei nostri clienti, mostrando un determinato nome una sola volta.
+Vogliamo anche contare quante volte un nome è presente nella nostra lista
+
+Soluzione :
+
+SELECT nome, COUNT(*)
+FROM `clienti`  
+GROUP BY nome;
+
+###
+
+Vogliamo mostrare la lista dei nomi dei nostri clienti, mostrando un determinato nome una sola volta.
+Vogliamo anche contare quante volte un nome è presente nella nostra lista.
+Vogliamo vedere in cima alla lista i numeri più frequenti
+
+Soluzione :
+
+SELECT nome, COUNT(*)
+FROM `clienti`  
+GROUP BY nome
+ORDER BY COUNT(*) DESC;
+
+###
+
+Vogliamo mostrare la lista dei nomi dei nostri clienti, mostrando un determinato nome una sola volta.
+Vogliamo anche contare quante volte un nome è presente nella nostra lista.
+Vogliamo vedere in cima alla lista i numeri più frequenti.
+Vogliamo vedere solo i nomi ripetuti almeno 2 volte.
+
+Soluzione :
+
+SELECT nome, COUNT(*)
+FROM `clienti`  
+GROUP BY nome
+HAVING COUNT(*) >= 2
+ORDER BY COUNT(*) DESC;
+
+###
+
+Mostrare la lista dei clienti che hanno effettuato almeno un ordine. 
+Mostrare anche i dati dell’ordine
+
+Soluzione :
+
+SELECT clienti.*, ordini.*
+FROM clienti 
+INNER JOIN ordini
+ON clienti.id = ordini.cliente_id;
+
+###
+
+Mostrare la lista di tutti i clienti. 
+Se un cliente ha un ordine collegato, mostrare anche i dati dell’ordine
+
+Soluzione :
+
+SELECT clienti.*, ordini.*
+FROM clienti 
+LEFT JOIN ordini
+ON clienti.id = ordini.cliente_id;
