@@ -342,7 +342,7 @@ VALUES ('scarpe da calcio', ‘ottime scarpe da calcio', 70);
 ###
 
 Siccome i nostri prodotti hanno nome e descrizione in inglese, vogliamo cambiare i valori del prodotto appena inserito.
-Quindi cambiamo il nome del prodotto da «scarpe da calcio» a «football boots» e la descrizione da «scarpe da calcio in offerta» a «great football boots» 
+Quindi cambiamo il nome del prodotto da «scarpe da calcio» a «football boots» e la descrizione da «ottime scarpe da calcio» a «great football boots» 
 
 Soluzione :
 
