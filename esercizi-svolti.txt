@@ -416,7 +416,7 @@ GROUP BY nome;
 
 Vogliamo mostrare la lista dei nomi dei nostri clienti, mostrando un determinato nome una sola volta.
 Vogliamo anche contare quante volte un nome è presente nella nostra lista.
-Vogliamo vedere in cima alla lista i numeri più frequenti
+Vogliamo vedere in cima alla lista i nomi più frequenti
 
 Soluzione :
 
@@ -429,7 +429,7 @@ ORDER BY COUNT(*) DESC;
 
 Vogliamo mostrare la lista dei nomi dei nostri clienti, mostrando un determinato nome una sola volta.
 Vogliamo anche contare quante volte un nome è presente nella nostra lista.
-Vogliamo vedere in cima alla lista i numeri più frequenti.
+Vogliamo vedere in cima alla lista i nomi più frequenti.
 Vogliamo vedere solo i nomi ripetuti almeno 2 volte.
 
 Soluzione :
