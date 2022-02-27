@@ -14,7 +14,7 @@ Impareremo Database realizzando un progetto, passo a passo, e durante lo svilupp
 Corso Database in 3 ore : il corso per imparare Database in pochissimo tempo, con meno teoria e più pratica! 
 
 ## Vuoi seguire tutto il corso? Eccoti il link alla playlist con tutti i video! :) 
-https://www.youtube.com/watch?v=DoTzN1o8Rrc&list=PLl8lST6xZTJYSKt_tA0PMaay2X8GQNNAQ
+https://www.youtube.com/watch?v=6dYI9T7nuEQ&list=PLl8lST6xZTJYSKt_tA0PMaay2X8GQNNAQ
 
 Buono studio! :)
 
