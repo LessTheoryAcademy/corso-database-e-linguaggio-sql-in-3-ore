@@ -7,7 +7,7 @@
 
 Questo è il corso che fa per te!
 
-Impareremo Database realizzando un progetto, passo a passo, e durante lo sviluppo introdurremo le tecnologie fondamentali per la conoscenza di Database.
+Impareremo Database realizzando un progetto, passo dopo passo, e durante lo sviluppo introdurremo le tecnologie fondamentali per la conoscenza di Database.
 
 ## In questo repository trovi i codici sql relativi al progetto interamente sviluppato.
 
