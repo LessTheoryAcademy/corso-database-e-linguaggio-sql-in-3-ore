@@ -14,7 +14,7 @@ Impareremo Database e linguaggio SQL scrivendo tanto codice insieme e durante lo
 Corso Database e linguaggio SQL in 2 ore : il corso per imparare Database e linguaggio SQL in pochissimo tempo, con meno teoria e più pratica! 
 
 ## Vuoi seguire tutto il corso? Eccoti il link dei video! :) 
-https://www.youtube.com/watch?v=lGeIBj5asSc&list=PLl8lST6xZTJYSKt_tA0PMaay2X8GQNNAQ&index=1
+https://www.youtube.com/watch?v=VIGbo-mY_kU&list=PLl8lST6xZTJYSKt_tA0PMaay2X8GQNNAQ&index=1
 
 Buono studio! :)
 
